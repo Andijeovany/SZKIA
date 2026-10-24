@@ -36,7 +36,6 @@ function SZK:LoadIcons()
 end
 SZK:LoadIcons()
 
--- [NUEVO] Fetch JSON desde URL (para config remota)
 function SZK:FetchJSON(url)
 	if type(url) ~= "string" or url == "" then return nil end
 	local ok, raw = pcall(function() return game:HttpGet(url) end)
@@ -46,7 +45,6 @@ function SZK:FetchJSON(url)
 	return data
 end
 
--- [NUEVO] Crear ventana directamente desde URL (config remota JSON)
 function SZK:CreateWindowFromURL(url)
 	local cfg = SZK:FetchJSON(url)
 	if not cfg then
@@ -130,6 +128,12 @@ local function Shade(color, amount)
 	return Color3.new(math.min(1, color.R + amount), math.min(1, color.G + amount), math.min(1, color.B + amount))
 end
 
+local function ContrastText(color)
+	if typeof(color) ~= "Color3" then return Color3.new(0, 0, 0) end
+	local lum = 0.299 * color.R + 0.587 * color.G + 0.114 * color.B
+	return lum > 0.5 and Color3.fromRGB(0, 0, 0) or Color3.fromRGB(255, 255, 255)
+end
+
 local function Tween(obj, t, props)
 	local anim = TweenService:Create(obj, TweenInfo.new(t, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), props)
 	anim:Play()
@@ -208,104 +212,31 @@ SZK.Themes.Amatista  = BuildTheme("Amatista",  "#9966CC", "#C9A0FF", "#9966CC", 
 SZK.Themes.Rubi      = BuildTheme("Rubi",      "#E0115F", "#FF4D8B", "#E0115F", "#FF4D8B", "#FFE5EE", "#C98AA5", "#0A0005", "#1A0A10", "#FF4D8B")
 SZK.Themes.Naranja   = BuildTheme("Naranja",   "#FF8C00", "#FFB347", "#FF8C00", "#FFB347", "#FFF3E0", "#C9A08A", "#0A0500", "#1A0F0A", "#FFB347")
 
--- ═══════════════════════════════════════════════════════════════
 -- [NUEVOS TEMAS RGB] Blanco, Negro, Rojo, Amarillo, Azul, Morado, Rosado
--- ═══════════════════════════════════════════════════════════════
-
--- BLANCO (tema claro: fondo blanco, texto oscuro, acentos visibles)
 SZK.Themes.Blanco = BuildTheme("Blanco",
-    "#333333",  -- accent (oscuro para que se vea sobre blanco)
-    "#B0B0B0",  -- outline
-    "#3A7BD5",  -- toggle (azul para contraste)
-    "#3A7BD5",  -- slider
-    "#1A1A1A",  -- text
-    "#707070",  -- placeholder
-    "#FFFFFF",  -- bg
-    "#F0F0F0",  -- elemBg
-    "#333333"   -- icon
+    "#333333", "#B0B0B0", "#3A7BD5", "#3A7BD5", "#1A1A1A", "#707070", "#FFFFFF", "#F0F0F0", "#333333"
 )
-
--- NEGRO (fondo puro negro, acentos gris oscuro)
 SZK.Themes.Negro = BuildTheme("Negro",
-    "#404040",  -- accent
-    "#202020",  -- outline
-    "#606060",  -- toggle
-    "#606060",  -- slider
-    "#E8E8E8",  -- text
-    "#808080",  -- placeholder
-    "#000000",  -- bg
-    "#0A0A0A",  -- elemBg
-    "#404040"   -- icon
+    "#404040", "#202020", "#606060", "#606060", "#E8E8E8", "#808080", "#000000", "#0A0A0A", "#404040"
 )
-
--- ROJO PURO (RGB 255,0,0) — nuevo, no reemplaza el "Rojo" existente
 SZK.Themes.RojoPuro = BuildTheme("RojoPuro",
-    "#FF0000",  -- accent
-    "#FF3333",  -- outline
-    "#FF0000",  -- toggle
-    "#FF0000",  -- slider
-    "#FFE5E5",  -- text
-    "#B38080",  -- placeholder
-    "#0A0000",  -- bg
-    "#1A0505",  -- elemBg
-    "#FF3333"   -- icon
+    "#FF0000", "#FF3333", "#FF0000", "#FF0000", "#FFE5E5", "#B38080", "#0A0000", "#1A0505", "#FF3333"
 )
-
--- AMARILLO (RGB 255,255,0)
 SZK.Themes.Amarillo = BuildTheme("Amarillo",
-    "#FFFF00",  -- accent
-    "#FFFF66",  -- outline
-    "#FFFF00",  -- toggle
-    "#FFFF00",  -- slider
-    "#FFFCE0",  -- text
-    "#B3B370",  -- placeholder
-    "#0A0A00",  -- bg
-    "#1A1A05",  -- elemBg
-    "#FFFF66"   -- icon
+    "#FFFF00", "#FFFF66", "#FFFF00", "#FFFF00", "#FFFCE0", "#B3B370", "#0A0A00", "#1A1A05", "#FFFF66"
 )
-
--- AZUL (RGB 0,0,255)
 SZK.Themes.Azul = BuildTheme("Azul",
-    "#0000FF",  -- accent
-    "#4D4DFF",  -- outline
-    "#0000FF",  -- toggle
-    "#0000FF",  -- slider
-    "#E0E0FF",  -- text
-    "#7070B3",  -- placeholder
-    "#00000A",  -- bg
-    "#05051A",  -- elemBg
-    "#4D4DFF"   -- icon
+    "#0000FF", "#4D4DFF", "#0000FF", "#0000FF", "#E0E0FF", "#7070B3", "#00000A", "#05051A", "#4D4DFF"
 )
-
--- MORADO (RGB 128,0,128)
 SZK.Themes.Morado = BuildTheme("Morado",
-    "#800080",  -- accent
-    "#B34DB3",  -- outline
-    "#800080",  -- toggle
-    "#800080",  -- slider
-    "#F0E0F0",  -- text
-    "#A070A0",  -- placeholder
-    "#0A000A",  -- bg
-    "#1A051A",  -- elemBg
-    "#B34DB3"   -- icon
+    "#800080", "#B34DB3", "#800080", "#800080", "#F0E0F0", "#A070A0", "#0A000A", "#1A051A", "#B34DB3"
 )
-
--- ROSADO (RGB 255,192,203)
 SZK.Themes.Rosado = BuildTheme("Rosado",
-    "#FFC0CB",  -- accent
-    "#FFD6DD",  -- outline
-    "#FFC0CB",  -- toggle
-    "#FFC0CB",  -- slider
-    "#FFE5F0",  -- text
-    "#B3808A",  -- placeholder
-    "#0A0505",  -- bg
-    "#1A0F10",  -- elemBg
-    "#FFD6DD"   -- icon
+    "#FFC0CB", "#FFD6DD", "#FFC0CB", "#FFC0CB", "#FFE5F0", "#B3808A", "#0A0505", "#1A0F10", "#FFD6DD"
 )
 
 SZK.ThemeOrder = {
     "SZKHUB", "Rojo", "Dorado", "Esmeralda", "Diamante", "Zafiro", "Amatista", "Rubi", "Naranja",
-    -- [NUEVOS RGB]
     "Blanco", "Negro", "RojoPuro", "Amarillo", "Azul", "Morado", "Rosado"
 }
 
@@ -488,7 +419,6 @@ function SZK:CreateWindow(config)
 	local title = config.Title or "SZKHUB"
 	local description = config.Description or "SZK"
 
-	-- [NUEVO] Normalizar Size (acepta Vector2, UDim2, o tabla JSON {X=,Y=})
 	local size = config.Size or Vector2.new(600, 410)
 	if type(size) == "table" and size.X and size.Y then
 		size = Vector2.new(tonumber(size.X) or 600, tonumber(size.Y) or 410)
@@ -498,18 +428,15 @@ function SZK:CreateWindow(config)
 		size = Vector2.new(600, 410)
 	end
 
-	-- [NUEVO] Normalizar ToggleKey (acepta string tipo "RightShift" de JSON)
 	local toggleKey = config.ToggleKey or Enum.KeyCode.RightShift
 	if type(toggleKey) == "string" then
 		toggleKey = Enum.KeyCode[toggleKey] or Enum.KeyCode.RightShift
 	end
 
 	local showThemeSelector = config.ThemeSelector == true
-	-- [NUEVO] Acepta URL, ID, rbxassetid://, o nil para QUITAR fondo
 	local bgImage = config.BackgroundImage
 	local bgTransparency = math.clamp(tonumber(config.BackgroundImageTransparency or config.BackgroundTransparency) or 0, 0, 1)
 	local panelTransparency = math.clamp(tonumber(config.Transparency) or 0.85, 0.02, 0.95)
-	-- [NUEVO] Nombre del botón abierto, acepta cualquier string o nil
 	local openButtonText = config.OpenButtonText or "OPEN SZK"
 
 	local Theme = SZK.Themes[themeName] or SZK.Themes.SZKHUB
@@ -852,9 +779,9 @@ function SZK:CreateWindow(config)
 	FloatBtn.AnchorPoint = Vector2.new(0.5, 0)
 	FloatBtn.Size = UDim2.fromOffset(140, 34)
 	FloatBtn.Position = UDim2.new(0.5, 0, 0, 12)
-	FloatBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	FloatBtn.BackgroundColor3 = Theme.Accent
 	FloatBtn.Text = openButtonText
-	FloatBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+	FloatBtn.TextColor3 = ContrastText(Theme.Accent)
 	FloatBtn.Font = Enum.Font.GothamBlack
 	FloatBtn.TextSize = 12
 	FloatBtn.AutoButtonColor = false
@@ -864,14 +791,14 @@ function SZK:CreateWindow(config)
 	FloatBtn.ZIndex = 10
 	FloatBtn.Parent = WindowGui
 	Round(10, FloatBtn)
-	local FloatStroke = Outline(FloatBtn, Color3.fromRGB(0, 0, 0), 1, 0.6)
+	local FloatStroke = Outline(FloatBtn, Theme.Outline, 1, 0.6)
 
 	FloatBtn.MouseEnter:Connect(function()
-		Tween(FloatBtn, 0.12, { BackgroundColor3 = Color3.fromRGB(235, 235, 245) })
+		Tween(FloatBtn, 0.12, { BackgroundColor3 = Shade(Theme.Accent, 0.12) })
 		Tween(FloatStroke, 0.12, { Transparency = 0.3 })
 	end)
 	FloatBtn.MouseLeave:Connect(function()
-		Tween(FloatBtn, 0.12, { BackgroundColor3 = Color3.fromRGB(255, 255, 255) })
+		Tween(FloatBtn, 0.12, { BackgroundColor3 = Theme.Accent })
 		Tween(FloatStroke, 0.12, { Transparency = 0.6 })
 	end)
 
@@ -1031,34 +958,49 @@ function SZK:CreateWindow(config)
 		end
 	end))
 
+	-- UpdateTheme: aplica colores con tween fluido cuando animate=true
 	local function UpdateTheme(name, animate)
 		local T = SZK.Themes[name] or SZK.Themes.SZKHUB
 		SZK.CurrentTheme = T
 		Theme = T
 
-		MainFrame.BackgroundColor3 = T.Background
+		local tweenInfo = TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+		local function tp(obj, prop, color)
+			if animate then
+				TweenService:Create(obj, tweenInfo, {[prop] = color}):Play()
+			else
+				obj[prop] = color
+			end
+		end
+
+		tp(MainFrame, "BackgroundColor3", T.Background)
 		MainFrame.BackgroundTransparency = mainBgTrans
-		Overlay.BackgroundColor3 = T.Background
-		HeaderBar.BackgroundColor3 = T.Background
-		TitleLabel.TextColor3 = T.Text
-		DescLabel.TextColor3 = T.Placeholder
-		MainStroke.Color = T.Outline
-		CloseStroke.Color = T.Outline
-		MinBtn.TextColor3 = T.Text
-		MinBtn.BackgroundColor3 = T.ElementBackground
-		CloseBtn.BackgroundColor3 = T.ElementBackground
-		for _, b in ipairs(closeBars) do b.BackgroundColor3 = T.Placeholder end
-		HeaderLine.BackgroundColor3 = T.Accent
-		HeaderDiamond.BackgroundColor3 = T.Accent
-		VLine.BackgroundColor3 = T.Outline
-		SideBg.BackgroundColor3 = T.Background
-		PageHost.BackgroundColor3 = T.Background
-		ThemePopup.BackgroundColor3 = T.ElementBackground
+		tp(Overlay, "BackgroundColor3", T.Background)
+		tp(HeaderBar, "BackgroundColor3", T.Background)
+		tp(TitleLabel, "TextColor3", T.Text)
+		tp(DescLabel, "TextColor3", T.Placeholder)
+		tp(MainStroke, "Color", T.Outline)
+		tp(CloseStroke, "Color", T.Outline)
+		tp(MinBtn, "TextColor3", T.Text)
+		tp(MinBtn, "BackgroundColor3", T.ElementBackground)
+		tp(CloseBtn, "BackgroundColor3", T.ElementBackground)
+		for _, b in ipairs(closeBars) do tp(b, "BackgroundColor3", T.Placeholder) end
+		tp(HeaderLine, "BackgroundColor3", T.Accent)
+		tp(HeaderDiamond, "BackgroundColor3", T.Accent)
+		tp(VLine, "BackgroundColor3", T.Outline)
+		tp(SideBg, "BackgroundColor3", T.Background)
+		tp(PageHost, "BackgroundColor3", T.Background)
+		tp(ThemePopup, "BackgroundColor3", T.ElementBackground)
 		if ThemeBtn then
 			ThemeBtn.Text = T.Name
-			ThemeBtn.TextColor3 = T.Text
-			ThemeBtn.BackgroundColor3 = T.ElementBackground
+			tp(ThemeBtn, "TextColor3", T.Text)
+			tp(ThemeBtn, "BackgroundColor3", T.ElementBackground)
 		end
+
+		-- [NUEVO] El botón flotante OPEN SZK sigue al tema
+		tp(FloatBtn, "BackgroundColor3", T.Accent)
+		tp(FloatBtn, "TextColor3", ContrastText(T.Accent))
+		tp(FloatStroke, "Color", T.Outline)
 
 		for _, item in ipairs(Registered) do
 			if item.Type == "TabBtn" then
@@ -1168,7 +1110,6 @@ function SZK:CreateWindow(config)
 		end
 	end
 
-	-- [NUEVO] Cambiar fondo en runtime. Acepta URL, ID, rbxassetid:// o nil/"" para QUITAR
 	function Window:SetBackgroundImage(src, trans)
 		local resolved = NormalizeImageSource(src or "")
 		BgImageLabel.Image = resolved
@@ -1177,22 +1118,18 @@ function SZK:CreateWindow(config)
 		hasBackground = resolved ~= ""
 	end
 
-	-- [NUEVO] Cambiar el texto del botón flotante "OPEN SZK"
 	function Window:SetOpenButtonText(text)
 		FloatBtn.Text = tostring(text or "OPEN SZK")
 	end
 
-	-- [NUEVO] Cambiar el título del header
 	function Window:SetTitle(text)
 		TitleLabel.Text = tostring(text or "")
 	end
 
-	-- [NUEVO] Cambiar la descripción del header
 	function Window:SetDescription(text)
 		DescLabel.Text = tostring(text or "")
 	end
 
-	-- [NUEVO] Mostrar/ocultar el botón flotante
 	function Window:SetButtonVisible(v)
 		FloatBtn.Visible = v and true or false
 	end
@@ -1797,7 +1734,6 @@ function SZK:CreateWindow(config)
 				table.insert(Registered, {Type="Element", Instance=row, Stroke=stroke, Label=titleLbl, CustomButtonColor=customColor, Extras=#extras > 0 and extras or nil})
 			end
 
-			-- [NUEVO] CreateBanner: soporta URL/ID/nil, y :Remove() para quitarlo
 			function Section:CreateBanner(bnConfig)
 				local c = NormalizeArgs(bnConfig) or {}
 				local resolved = ResolveIcon(c.Image or c.Banner)
@@ -1822,7 +1758,6 @@ function SZK:CreateWindow(config)
 				img.Parent = frame
 				table.insert(Registered, {Type="Element", Instance=frame, Stroke=stroke})
 				local obj = {}
-				-- [NUEVO] SetImage(nil) oculta el banner. SetImage(url/id) lo cambia en vivo
 				function obj:SetImage(src)
 					local r = ResolveIcon(src)
 					img.Image = r
@@ -1832,7 +1767,6 @@ function SZK:CreateWindow(config)
 					if tonumber(h) then frame.Size = UDim2.new(1, 0, 0, tonumber(h)) end
 				end
 				function obj:Get() return img.Image end
-				-- [NUEVO] Eliminar banner por completo
 				function obj:Remove()
 					if frame and frame.Parent then frame:Destroy() end
 				end
