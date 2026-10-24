@@ -202,42 +202,162 @@ local function BuildTheme(name, accent, outline, toggle, slider, text, placehold
 	}
 end
 
-SZK.Themes.SZKHUB    = BuildTheme("SZKHUB",    "#FFFFFF", "#8C8C8C", "#FFFFFF", "#FFFFFF", "#F0F0F0", "#969696", "#000000", "#141414", "#FFFFFF")
-SZK.Themes.Rojo      = BuildTheme("Rojo",      "#FF1A1A", "#FF2A2A", "#FF1A1A", "#FF1A1A", "#F0F0F0", "#9A9A9A", "#000000", "#0A0A0A", "#FF1A1A")
-SZK.Themes.Dorado    = BuildTheme("Dorado",    "#D4AF37", "#F0D580", "#D4AF37", "#F0D580", "#FFF8E7", "#C9B98A", "#0A0805", "#15110A", "#F0D580")
-SZK.Themes.Esmeralda = BuildTheme("Esmeralda", "#50C878", "#7FFFA0", "#50C878", "#7FFFA0", "#E7FFEE", "#8AB99A", "#000A05", "#0A1A0F", "#7FFFA0")
-SZK.Themes.Diamante  = BuildTheme("Diamante",  "#B9F2FF", "#E0FFFF", "#B9F2FF", "#E0FFFF", "#E8FCFF", "#8AB9C9", "#000A0F", "#0A1419", "#E0FFFF")
-SZK.Themes.Zafiro    = BuildTheme("Zafiro",    "#0F52BA", "#4A90E2", "#0F52BA", "#4A90E2", "#E7F0FF", "#8AA0C9", "#000510", "#0A0F1A", "#4A90E2")
-SZK.Themes.Amatista  = BuildTheme("Amatista",  "#9966CC", "#C9A0FF", "#9966CC", "#C9A0FF", "#F0E7FF", "#B09AC9", "#0A0010", "#150A1A", "#C9A0FF")
-SZK.Themes.Rubi      = BuildTheme("Rubi",      "#E0115F", "#FF4D8B", "#E0115F", "#FF4D8B", "#FFE5EE", "#C98AA5", "#0A0005", "#1A0A10", "#FF4D8B")
-SZK.Themes.Naranja   = BuildTheme("Naranja",   "#FF8C00", "#FFB347", "#FF8C00", "#FFB347", "#FFF3E0", "#C9A08A", "#0A0500", "#1A0F0A", "#FFB347")
+-- 01: Aurex (ex Dorado)
+SZK.Themes.Aurex = BuildTheme("Aurex",
+    "#D4AF37",  -- Accent
+    "#F0D580",  -- Outline
+    "#D4AF37",  -- Toggle
+    "#F0D580",  -- Slider
+    "#FFF8E7",  -- Text
+    "#C9B98A",  -- Placeholder
+    "#0A0805",  -- Background
+    "#15110A",  -- ElementBackground
+    "#F0D580"   -- Icon
+)
 
--- [NUEVOS TEMAS RGB] Blanco, Negro, Rojo, Amarillo, Azul, Morado, Rosado
-SZK.Themes.Blanco = BuildTheme("Blanco",
-    "#333333", "#B0B0B0", "#3A7BD5", "#3A7BD5", "#1A1A1A", "#707070", "#FFFFFF", "#F0F0F0", "#333333"
+-- 02: Vexora (ex Rojo)
+SZK.Themes.Vexora = BuildTheme("Vexora",
+    "#FF1A1A", "#FF2A2A", "#FF1A1A", "#FF1A1A",
+    "#F0F0F0", "#9A9A9A", "#000000", "#0A0A0A", "#FF1A1A"
 )
-SZK.Themes.Negro = BuildTheme("Negro",
-    "#404040", "#202020", "#606060", "#606060", "#E8E8E8", "#808080", "#000000", "#0A0A0A", "#404040"
+
+-- 03: Nexor (ex Azul)
+SZK.Themes.Nexor = BuildTheme("Nexor",
+    "#008CFF", "#52B6FF", "#008CFF", "#52B6FF",
+    "#F0F7FF", "#8A9BB0", "#050A12", "#0B1422", "#008CFF"
 )
-SZK.Themes.RojoPuro = BuildTheme("RojoPuro",
-    "#FF0000", "#FF3333", "#FF0000", "#FF0000", "#FFE5E5", "#B38080", "#0A0000", "#1A0505", "#FF3333"
+
+-- 04: Zyreon (ex Morado)
+SZK.Themes.Zyreon = BuildTheme("Zyreon",
+    "#9D4EDD", "#C77DFF", "#9D4EDD", "#C77DFF",
+    "#F8F0FF", "#A394B5", "#0C0612", "#180D24", "#9D4EDD"
 )
-SZK.Themes.Amarillo = BuildTheme("Amarillo",
-    "#FFFF00", "#FFFF66", "#FFFF00", "#FFFF00", "#FFFCE0", "#B3B370", "#0A0A00", "#1A1A05", "#FFFF66"
+
+-- 05: Verdyn (ex Esmeralda)
+SZK.Themes.Verdyn = BuildTheme("Verdyn",
+    "#00D084", "#65FFC2", "#00D084", "#65FFC2",
+    "#E8FFF5", "#86A99A", "#030D09", "#091A13", "#00D084"
 )
-SZK.Themes.Azul = BuildTheme("Azul",
-    "#0000FF", "#4D4DFF", "#0000FF", "#0000FF", "#E0E0FF", "#7070B3", "#00000A", "#05051A", "#4D4DFF"
+
+-- 06: Veloura (ex Rosado)
+SZK.Themes.Veloura = BuildTheme("Veloura",
+    "#FF4FA3", "#FF91C5", "#FF4FA3", "#FF91C5",
+    "#FFF0F7", "#B99AAA", "#10060C", "#210D19", "#FF4FA3"
 )
-SZK.Themes.Morado = BuildTheme("Morado",
-    "#800080", "#B34DB3", "#800080", "#800080", "#F0E0F0", "#A070A0", "#0A000A", "#1A051A", "#B34DB3"
+
+-- 07: Cryonix (ex Cian)
+SZK.Themes.Cryonix = BuildTheme("Cryonix",
+    "#00E5FF", "#80F4FF", "#00E5FF", "#80F4FF",
+    "#E8FDFF", "#85B6BC", "#030B0D", "#09181C", "#00E5FF"
 )
-SZK.Themes.Rosado = BuildTheme("Rosado",
-    "#FFC0CB", "#FFD6DD", "#FFC0CB", "#FFC0CB", "#FFE5F0", "#B3808A", "#0A0505", "#1A0F10", "#FFD6DD"
+
+-- 08: Aether (ex Blanco)
+SZK.Themes.Aether = BuildTheme("Aether",
+    "#FFFFFF", "#D9D9D9", "#FFFFFF", "#E5E5E5",
+    "#FFFFFF", "#A0A0A0", "#080808", "#141414", "#FFFFFF"
+)
+
+-- 09: Oblivion (ex Negro)
+SZK.Themes.Oblivion = BuildTheme("Oblivion",
+    "#777777", "#AAAAAA", "#888888", "#BBBBBB",
+    "#F5F5F5", "#777777", "#030303", "#0D0D0D", "#E0E0E0"
+)
+
+-- 10: Solvex (ex Naranja)
+SZK.Themes.Solvex = BuildTheme("Solvex",
+    "#FF7800", "#FFB15C", "#FF7800", "#FFB15C",
+    "#FFF4E8", "#B99A82", "#120900", "#211206", "#FF7800"
+)
+
+-- 11: Luxion (ex Amarillo)
+SZK.Themes.Luxion = BuildTheme("Luxion",
+    "#FFE600", "#FFF176", "#FFE600", "#FFF176",
+    "#FFFDE8", "#B8B17A", "#100F03", "#201E08", "#FFE600"
+)
+
+-- 12: Aquyra (ex Turquesa)
+SZK.Themes.Aquyra = BuildTheme("Aquyra",
+    "#00C9B7", "#65F5E5", "#00C9B7", "#65F5E5",
+    "#E8FFFC", "#82B8B2", "#03100E", "#09201D", "#00C9B7"
+)
+
+-- 13: Toxyn (ex Lima)
+SZK.Themes.Toxyn = BuildTheme("Toxyn",
+    "#A8FF00", "#D0FF66", "#A8FF00", "#D0FF66",
+    "#F7FFE8", "#A3B47D", "#0A1000", "#172006", "#A8FF00"
+)
+
+-- 14: Veylith (ex Violeta)
+SZK.Themes.Veylith = BuildTheme("Veylith",
+    "#7047FF", "#A18BFF", "#7047FF", "#A18BFF",
+    "#F2EEFF", "#A39ABF", "#090612", "#151025", "#7047FF"
+)
+
+-- 15: Scarvex (ex Carmesí)
+SZK.Themes.Scarvex = BuildTheme("Scarvex",
+    "#DC143C", "#FF607C", "#DC143C", "#FF607C",
+    "#FFF0F3", "#B8949B", "#100307", "#21070E", "#DC143C"
+)
+
+-- 16: Neovex (ex Arcade)
+SZK.Themes.Neovex = BuildTheme("Neovex",
+    "#00FF66", "#70FFA6", "#00FF66", "#70FFA6",
+    "#E8FFF0", "#80B996", "#020B05", "#07180D", "#00FF66"
+)
+
+-- 17: Glacien (ex Hielo)
+SZK.Themes.Glacien = BuildTheme("Glacien",
+    "#A5E7FF", "#D8F5FF", "#A5E7FF", "#D8F5FF",
+    "#F0FBFF", "#91B1C0", "#050C12", "#0B1922", "#A5E7FF"
+)
+
+-- 18: Cuprion (ex Cobre)
+SZK.Themes.Cuprion = BuildTheme("Cuprion",
+    "#B87333", "#E6A66A", "#B87333", "#E6A66A",
+    "#FFF3E8", "#B59A85", "#100904", "#21140B", "#B87333"
+)
+
+-- 19: Astrion (ex Galaxia)
+SZK.Themes.Astrion = BuildTheme("Astrion",
+    "#B026FF", "#E0A3FF", "#B026FF", "#E0A3FF",
+    "#FAEEFF", "#B49ABF", "#090310", "#180923", "#B026FF"
+)
+
+-- 20: Ignyx (ex Fuego)
+SZK.Themes.Ignyx = BuildTheme("Ignyx",
+    "#FF4500", "#FF8C42", "#FF4500", "#FF8C42",
+    "#FFF1E8", "#B99A8A", "#100500", "#220D04", "#FF4500"
+)
+
+-- 21: Thalor (ex Océano)
+SZK.Themes.Thalor = BuildTheme("Thalor",
+    "#0066FF", "#66A3FF", "#0066FF", "#66A3FF",
+    "#EDF5FF", "#91A7C4", "#030817", "#09142B", "#0066FF"
+)
+
+-- 22: Mynthex (ex Menta)
+SZK.Themes.Mynthex = BuildTheme("Mynthex",
+    "#7CFFB2", "#B2FFD2", "#7CFFB2", "#B2FFD2",
+    "#EDFFF4", "#91B5A0", "#04100A", "#0B1E13", "#7CFFB2"
+)
+
+-- 23: Elystra (ex Aurora)
+SZK.Themes.Elystra = BuildTheme("Elystra",
+    "#45FFCA", "#A0FFE8", "#45FFCA", "#A0FFE8",
+    "#EDFFFB", "#8FBDB2", "#040A12", "#0A1720", "#45FFCA"
+)
+
+-- 24: Voltyx (ex Plasma)
+SZK.Themes.Voltyx = BuildTheme("Voltyx",
+    "#FF00CC", "#FF80E6", "#FF00CC", "#FF80E6",
+    "#FFF0FC", "#BA91B2", "#10030E", "#22091D", "#FF00CC"
 )
 
 SZK.ThemeOrder = {
-    "SZKHUB", "Rojo", "Dorado", "Esmeralda", "Diamante", "Zafiro", "Amatista", "Rubi", "Naranja",
-    "Blanco", "Negro", "RojoPuro", "Amarillo", "Azul", "Morado", "Rosado"
+    "Aurex", "Vexora", "Nexor", "Zyreon", "Verdyn", "Veloura",
+    "Cryonix", "Aether", "Oblivion", "Solvex", "Luxion", "Aquyra",
+    "Toxyn", "Veylith", "Scarvex", "Neovex", "Glacien", "Cuprion",
+    "Astrion", "Ignyx", "Thalor", "Mynthex", "Elystra", "Voltyx"
 }
 
 local MainGui = Instance.new("ScreenGui")
@@ -307,7 +427,7 @@ function SZK:Notify(config)
 	local iconKey = config.Icon
 	local colors = {Success=Color3.fromRGB(52,199,89), Error=Color3.fromRGB(235,64,52), Warning=Color3.fromRGB(255,176,32), Info=Color3.fromRGB(80,140,255)}
 	local accent = colors[ntype] or colors.Info
-	local T = SZK.CurrentTheme or SZK.Themes.SZKHUB
+	local T = SZK.CurrentTheme or SZK.Themes.Aurex
 
 	local slot = Instance.new("Frame")
 	slot.Size = UDim2.new(1, 0, 0, 0)
@@ -415,8 +535,8 @@ end
 
 function SZK:CreateWindow(config)
 	config = config or {}
-	local themeName = config.Theme or "SZKHUB"
-	local title = config.Title or "SZKHUB"
+	local themeName = config.Theme or "Aurex"
+	local title = config.Title or "SZK"
 	local description = config.Description or "SZK"
 
 	local size = config.Size or Vector2.new(600, 410)
@@ -439,7 +559,7 @@ function SZK:CreateWindow(config)
 	local panelTransparency = math.clamp(tonumber(config.Transparency) or 0.85, 0.02, 0.95)
 	local openButtonText = config.OpenButtonText or "OPEN SZK"
 
-	local Theme = SZK.Themes[themeName] or SZK.Themes.SZKHUB
+	local Theme = SZK.Themes[themeName] or SZK.Themes.Aurex
 	SZK.CurrentTheme = Theme
 	local Registered = {}
 	local DependentRows = {}
@@ -752,7 +872,7 @@ function SZK:CreateWindow(config)
 	PageHost.Parent = MainFrame
 
 	local ThemePopup = Instance.new("Frame")
-	ThemePopup.Size = UDim2.fromOffset(180, 280)
+	ThemePopup.Size = UDim2.fromOffset(180, 340)
 	ThemePopup.BackgroundColor3 = Theme.ElementBackground
 	ThemePopup.BackgroundTransparency = 0.05
 	ThemePopup.Visible = false
@@ -958,9 +1078,8 @@ function SZK:CreateWindow(config)
 		end
 	end))
 
-	-- UpdateTheme: aplica colores con tween fluido cuando animate=true
 	local function UpdateTheme(name, animate)
-		local T = SZK.Themes[name] or SZK.Themes.SZKHUB
+		local T = SZK.Themes[name] or SZK.Themes.Aurex
 		SZK.CurrentTheme = T
 		Theme = T
 
@@ -997,7 +1116,6 @@ function SZK:CreateWindow(config)
 			tp(ThemeBtn, "BackgroundColor3", T.ElementBackground)
 		end
 
-		-- [NUEVO] El botón flotante OPEN SZK sigue al tema
 		tp(FloatBtn, "BackgroundColor3", T.Accent)
 		tp(FloatBtn, "TextColor3", ContrastText(T.Accent))
 		tp(FloatStroke, "Color", T.Outline)
@@ -1096,7 +1214,7 @@ function SZK:CreateWindow(config)
 			local vp = GetViewport()
 			local x = math.clamp(abs.X + asz.X - 180, 6, math.max(6, vp.X - 186))
 			local belowY = abs.Y + asz.Y + 5
-			local y = belowY + 280 <= vp.Y - 6 and belowY or math.max(6, abs.Y - 285)
+			local y = belowY + 340 <= vp.Y - 6 and belowY or math.max(6, abs.Y - 345)
 			ThemePopup.Position = UDim2.fromOffset(x, y)
 			ThemePopup.Visible = true
 		end)
