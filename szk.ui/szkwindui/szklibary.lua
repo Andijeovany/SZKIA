@@ -202,6 +202,19 @@ local function BuildTheme(name, accent, outline, toggle, slider, text, placehold
 	}
 end
 
+-- 00: ECLIPSE-SZK (Tema principal por defecto)
+SZK.Themes.EclipseSZK = BuildTheme("ECLIPSE-SZK",
+    "#FFFFFF", -- Accent
+    "#BFBFBF", -- Outline
+    "#FFFFFF", -- Toggle
+    "#E0E0E0", -- Slider
+    "#FFFFFF", -- Text
+    "#858585", -- Placeholder
+    "#050505", -- Background
+    "#111111", -- ElementBackground
+    "#FFFFFF"  -- Icon
+)
+
 -- 01: Aurex (ex Dorado)
 SZK.Themes.Aurex = BuildTheme("Aurex",
     "#D4AF37",  -- Accent
@@ -354,6 +367,7 @@ SZK.Themes.Voltyx = BuildTheme("Voltyx",
 )
 
 SZK.ThemeOrder = {
+    "EclipseSZK",
     "Aurex", "Vexora", "Nexor", "Zyreon", "Verdyn", "Veloura",
     "Cryonix", "Aether", "Oblivion", "Solvex", "Luxion", "Aquyra",
     "Toxyn", "Veylith", "Scarvex", "Neovex", "Glacien", "Cuprion",
@@ -427,7 +441,7 @@ function SZK:Notify(config)
 	local iconKey = config.Icon
 	local colors = {Success=Color3.fromRGB(52,199,89), Error=Color3.fromRGB(235,64,52), Warning=Color3.fromRGB(255,176,32), Info=Color3.fromRGB(80,140,255)}
 	local accent = colors[ntype] or colors.Info
-	local T = SZK.CurrentTheme or SZK.Themes.Aurex
+	local T = SZK.CurrentTheme or SZK.Themes.EclipseSZK
 
 	local slot = Instance.new("Frame")
 	slot.Size = UDim2.new(1, 0, 0, 0)
@@ -535,7 +549,7 @@ end
 
 function SZK:CreateWindow(config)
 	config = config or {}
-	local themeName = config.Theme or "Aurex"
+	local themeName = config.Theme or "EclipseSZK"
 	local title = config.Title or "SZK"
 	local description = config.Description or "SZK"
 
@@ -559,7 +573,7 @@ function SZK:CreateWindow(config)
 	local panelTransparency = math.clamp(tonumber(config.Transparency) or 0.85, 0.02, 0.95)
 	local openButtonText = config.OpenButtonText or "OPEN SZK"
 
-	local Theme = SZK.Themes[themeName] or SZK.Themes.Aurex
+	local Theme = SZK.Themes[themeName] or SZK.Themes.EclipseSZK
 	SZK.CurrentTheme = Theme
 	local Registered = {}
 	local DependentRows = {}
@@ -1079,7 +1093,7 @@ function SZK:CreateWindow(config)
 	end))
 
 	local function UpdateTheme(name, animate)
-		local T = SZK.Themes[name] or SZK.Themes.Aurex
+		local T = SZK.Themes[name] or SZK.Themes.EclipseSZK
 		SZK.CurrentTheme = T
 		Theme = T
 
