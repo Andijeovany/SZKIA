@@ -208,7 +208,106 @@ SZK.Themes.Amatista  = BuildTheme("Amatista",  "#9966CC", "#C9A0FF", "#9966CC", 
 SZK.Themes.Rubi      = BuildTheme("Rubi",      "#E0115F", "#FF4D8B", "#E0115F", "#FF4D8B", "#FFE5EE", "#C98AA5", "#0A0005", "#1A0A10", "#FF4D8B")
 SZK.Themes.Naranja   = BuildTheme("Naranja",   "#FF8C00", "#FFB347", "#FF8C00", "#FFB347", "#FFF3E0", "#C9A08A", "#0A0500", "#1A0F0A", "#FFB347")
 
-SZK.ThemeOrder = {"SZKHUB", "Rojo", "Dorado", "Esmeralda", "Diamante", "Zafiro", "Amatista", "Rubi", "Naranja"}
+-- ═══════════════════════════════════════════════════════════════
+-- [NUEVOS TEMAS RGB] Blanco, Negro, Rojo, Amarillo, Azul, Morado, Rosado
+-- ═══════════════════════════════════════════════════════════════
+
+-- BLANCO (tema claro: fondo blanco, texto oscuro, acentos visibles)
+SZK.Themes.Blanco = BuildTheme("Blanco",
+    "#333333",  -- accent (oscuro para que se vea sobre blanco)
+    "#B0B0B0",  -- outline
+    "#3A7BD5",  -- toggle (azul para contraste)
+    "#3A7BD5",  -- slider
+    "#1A1A1A",  -- text
+    "#707070",  -- placeholder
+    "#FFFFFF",  -- bg
+    "#F0F0F0",  -- elemBg
+    "#333333"   -- icon
+)
+
+-- NEGRO (fondo puro negro, acentos gris oscuro)
+SZK.Themes.Negro = BuildTheme("Negro",
+    "#404040",  -- accent
+    "#202020",  -- outline
+    "#606060",  -- toggle
+    "#606060",  -- slider
+    "#E8E8E8",  -- text
+    "#808080",  -- placeholder
+    "#000000",  -- bg
+    "#0A0A0A",  -- elemBg
+    "#404040"   -- icon
+)
+
+-- ROJO PURO (RGB 255,0,0) — nuevo, no reemplaza el "Rojo" existente
+SZK.Themes.RojoPuro = BuildTheme("RojoPuro",
+    "#FF0000",  -- accent
+    "#FF3333",  -- outline
+    "#FF0000",  -- toggle
+    "#FF0000",  -- slider
+    "#FFE5E5",  -- text
+    "#B38080",  -- placeholder
+    "#0A0000",  -- bg
+    "#1A0505",  -- elemBg
+    "#FF3333"   -- icon
+)
+
+-- AMARILLO (RGB 255,255,0)
+SZK.Themes.Amarillo = BuildTheme("Amarillo",
+    "#FFFF00",  -- accent
+    "#FFFF66",  -- outline
+    "#FFFF00",  -- toggle
+    "#FFFF00",  -- slider
+    "#FFFCE0",  -- text
+    "#B3B370",  -- placeholder
+    "#0A0A00",  -- bg
+    "#1A1A05",  -- elemBg
+    "#FFFF66"   -- icon
+)
+
+-- AZUL (RGB 0,0,255)
+SZK.Themes.Azul = BuildTheme("Azul",
+    "#0000FF",  -- accent
+    "#4D4DFF",  -- outline
+    "#0000FF",  -- toggle
+    "#0000FF",  -- slider
+    "#E0E0FF",  -- text
+    "#7070B3",  -- placeholder
+    "#00000A",  -- bg
+    "#05051A",  -- elemBg
+    "#4D4DFF"   -- icon
+)
+
+-- MORADO (RGB 128,0,128)
+SZK.Themes.Morado = BuildTheme("Morado",
+    "#800080",  -- accent
+    "#B34DB3",  -- outline
+    "#800080",  -- toggle
+    "#800080",  -- slider
+    "#F0E0F0",  -- text
+    "#A070A0",  -- placeholder
+    "#0A000A",  -- bg
+    "#1A051A",  -- elemBg
+    "#B34DB3"   -- icon
+)
+
+-- ROSADO (RGB 255,192,203)
+SZK.Themes.Rosado = BuildTheme("Rosado",
+    "#FFC0CB",  -- accent
+    "#FFD6DD",  -- outline
+    "#FFC0CB",  -- toggle
+    "#FFC0CB",  -- slider
+    "#FFE5F0",  -- text
+    "#B3808A",  -- placeholder
+    "#0A0505",  -- bg
+    "#1A0F10",  -- elemBg
+    "#FFD6DD"   -- icon
+)
+
+SZK.ThemeOrder = {
+    "SZKHUB", "Rojo", "Dorado", "Esmeralda", "Diamante", "Zafiro", "Amatista", "Rubi", "Naranja",
+    -- [NUEVOS RGB]
+    "Blanco", "Negro", "RojoPuro", "Amarillo", "Azul", "Morado", "Rosado"
+}
 
 local MainGui = Instance.new("ScreenGui")
 MainGui.Name = "SZKLibrary"
